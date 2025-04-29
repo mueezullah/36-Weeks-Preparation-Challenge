@@ -6,17 +6,6 @@ This repository contains weekly assignments categorized by difficulty and includ
 
 ---
 
-## 📌 What’s Inside?
-
-Each week features a set of coding challenges organized into:
-- ✅ **Easy**
-- 🟡 **Medium**
-- 🔴 **Hard**
-
-Every challenge is solved in its own file, and most have test files to verify correctness.
-
----
-
 ## ✨ Why This Challenge?
 
 To:
