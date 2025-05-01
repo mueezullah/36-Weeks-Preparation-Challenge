@@ -3,20 +3,21 @@ const app = express();
 const port = 3000;
 
 app.get("/", (req, res) => {
-  // res.send("GET REQ a gai hoho");
-  res.sendFile("./send.html", { root: __dirname });
+  // res.send("GET Request Received");
+  res.sendFile("./index.html", { root: __dirname });
 });
 
 app.post("/items", (req, res) => {
-  res.send("Got a POST Request");
+  // res.send("POST Request Received");
+  res.json({ a: 1, b: 2, c: 3 });
 });
 
-app.put("/items/id", (req, res) => {
-  res.send("GOt a PUT Request");
+app.put("/about", (req, res) => {
+  res.send("PUT Request Received");
 });
 
-app.delete("/items/id", (req, res) => {
-  res.send("Got a DELETE Request");
+app.delete("/other", (req, res) => {
+  res.send("DELETE Request Received");
 });
 
 app.listen(port, () => {
