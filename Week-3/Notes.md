@@ -2,17 +2,17 @@
 
 **Node.js** is an open-source, cross-platform JavaScript runtime environment that allows you to run JavaScript **outside the browser**—usually on the server.
 
-```
+```js
 // A simple Node.js server
-const http = require('http');
+const http = require("http");
 
 const server = http.createServer((req, res) => {
-  res.write('Hello from Node.js!');
+  res.write("Hello from Node.js!");
   res.end();
 });
 
 server.listen(3000, () => {
-  console.log('Server running at http://localhost:3000/');
+  console.log("Server running at http://localhost:3000/");
 });
 ```
 
@@ -32,16 +32,16 @@ server.listen(3000, () => {
 
 **Express.js** is a lightweight and flexible **web application framework** built on top of Node.js. It simplifies the process of building web servers and APIs.
 
-```
-const express = require('express');
+```js
+const express = require("express");
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello from Express!');
+app.get("/", (req, res) => {
+  res.send("Hello from Express!");
 });
 
 app.listen(3000, () => {
-  console.log('Server is running...');
+  console.log("Server is running...");
 });
 ```
 
