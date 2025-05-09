@@ -41,17 +41,6 @@ function App() {
 
 ---
 
-## 🧬 Conceptual Flow Diagram
-
-```plaintext
-React Virtual DOM
-    ↓ Diffing
-    ↓
-Real DOM (Browser)
-```
-
----
-
 ## 🔍 ReactDOM Explained
 
 - `ReactDOM` is the bridge between React and the browser's DOM.
@@ -94,42 +83,26 @@ Real DOM (Browser)
 
 ---
 
-## Diagrams
+## Visual Representation
 
 ### JavaScript
 
-+-------------------------+
-| JavaScript DOM |
-| |
-| Direct DOM Manipulation|
-| |
-+-------------------------+
+JavaScript Code
 ↓
-**Changes** (Reflow/Repaint)
+Direct DOM Access
 ↓
-+-------------------------+
-| Real DOM in Browser |
-| |
-| Updates to the actual |
-| webpage occur here |
-+-------------------------+
+Browser Reflow / Repaint
+↓
+Updated Real DOM
 
 ### React
 
-+-------------------------+
-| React Virtual DOM |
-| |
-| Virtual representation |
-| of the actual DOM |
-+-------------------------+
+Component State/Props Change
 ↓
-**Diffing** (Finds Differences)
+Update Virtual DOM
 ↓
-+-------------------------+
-| Real DOM in Browser |
-| |
-| Only updated parts |
-| of the page are changed|
-+-------------------------+
+Diff with Old Virtual DOM
+↓
+Minimal Real DOM Update
 
 ---
