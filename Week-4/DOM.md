@@ -87,6 +87,7 @@ function App() {
 
 ### JavaScript
 
+```
 JavaScript Code
 ↓
 Direct DOM Access
@@ -94,9 +95,11 @@ Direct DOM Access
 Browser Reflow / Repaint
 ↓
 Updated Real DOM
+```
 
 ### React
 
+```js
 Component State/Props Change
 ↓
 Update Virtual DOM
@@ -104,5 +107,6 @@ Update Virtual DOM
 Diff with Old Virtual DOM
 ↓
 Minimal Real DOM Update
+```
 
 ---
