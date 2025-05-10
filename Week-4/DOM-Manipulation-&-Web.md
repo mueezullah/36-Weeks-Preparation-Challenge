@@ -63,11 +63,17 @@ document.querySelector("ul").append("Another item");
 
 ## 🌍 Static vs Dynamic Websites
 
-| Feature      | Static Website            | Dynamic Website                                    |
-| ------------ | ------------------------- | -------------------------------------------------- |
-| Content      | Fixed, same for all users | Changes based on user or interaction               |
-| Technologies | HTML, CSS                 | HTML, CSS, JavaScript, Server-side (e.g., Node.js) |
-| Example      | Portfolio, landing pages  | Social media, e-commerce                           |
+| Feature             | **Static Website**                         | **Dynamic Website**                                                |
+| ------------------- | ------------------------------------------ | ------------------------------------------------------------------ |
+| **Definition**      | Pre-built pages with fixed content         | Pages generated dynamically using server-side scripting            |
+| **Technology Used** | HTML, CSS, JavaScript (client-side only)   | HTML, CSS, JavaScript + server-side languages (e.g., PHP, Node.js) |
+| **Content**         | Same for every user                        | Can change based on user interaction or database                   |
+| **Database**        | Not required                               | Usually connected to a database                                    |
+| **Speed**           | Fast to load (no processing needed)        | Slower due to backend processing                                   |
+| **Interactivity**   | Minimal or none                            | High (e.g., user login, comments, personalized dashboards)         |
+| **Maintenance**     | Harder to update (requires manual editing) | Easier with CMS or admin panel                                     |
+| **Examples**        | Portfolio, resume, documentation pages     | E-commerce sites, social media, blogs with admin dashboards        |
+| **Cost**            | Cheaper and easier to host                 | More expensive due to backend/server needs                         |
 
 ---
 
