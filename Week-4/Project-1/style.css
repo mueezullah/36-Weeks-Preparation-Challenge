@@ -1,0 +1,68 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.borderContainer {
+  border: 1px solid grey;
+  border-radius: 30px;
+  width: 60%;
+  height: 50%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-weight: bold;
+}
+
+.addTwoNum {
+  background-color: lightblue;
+  border-radius: 20px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 3px;
+}
+
+.inputs {
+  border: none;
+  padding: 4px;
+  margin: 2px;
+  height: 30px;
+  font-weight: bold;
+}
+
+.lower {
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.addBtn {
+  border: none;
+  border-radius: 5px;
+  background: white;
+  color: black;
+  font-weight: bold;
+  height: 50px;
+  width: 55px;
+}
+
+.addBtn:hover {
+  cursor: pointer;
+  border-radius: 10px;
+  background: rgb(120, 127, 127);
+  color: white;
+}
