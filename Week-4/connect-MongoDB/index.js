@@ -11,7 +11,6 @@ app.use(express.json());
 connectDB();
 
 app.use("/api", users);
-
 // -> /api/users
 
 app.get("/", (req, res) => {
