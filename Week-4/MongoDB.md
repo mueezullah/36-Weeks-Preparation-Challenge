@@ -96,11 +96,15 @@ Using .populate() gives us relational-like behavior in MongoDB.
 
 ## 🧪 CRUD Operations in Mongoose
 
-### 🔍 Find All
+### 🔍 `find()`
+
+Find All Users
 
 ```js
 User.find().then((users) => console.log(users));
 ```
+
+> Returns an array of all users in the collection.
 
 ### 🔍 Find One
 
