@@ -106,19 +106,31 @@ User.find().then((users) => console.log(users));
 
 > Returns an array of all users in the collection.
 
-### 🔍 Find One
+### 🔍 `findOne()`
+
+Find a Single User
 
 ```js
-User.findOne({ email: "alice@example.com" }).then((user) => console.log(user));
+User.findOne({ email: "alice@example.com" })
+  .then((user) => console.log("Found user:", user))
+  .catch((err) => console.error(err));
 ```
 
-### 🔍 Find by ID
+> Returns one matching document, or `null` if not found.
+
+### 🔍 `findById()`
+
+Find by ID
 
 ```js
 User.findById("647c6fcf9b8c1a2b3456e890").then((user) => console.log(user));
 ```
 
-### ✏️ Update
+> Use this if you already have the MongoDB `_id` of the document.
+
+### ✏️ `updateOne()`
+
+Update a User
 
 ```js
 User.updateOne({ email: "alice@example.com" }, { age: 26 }).then((result) =>
@@ -126,15 +138,27 @@ User.updateOne({ email: "alice@example.com" }, { age: 26 }).then((result) =>
 );
 ```
 
-Or using `findByIdAndUpdate`:
+> Updates the first document that matches the condition.
+
+### `findByIdAndUpdate()`
+
+Update by ID
 
 ```js
-User.findByIdAndUpdate("647c6fcf...", { name: "Alicia" }, { new: true }).then(
-  (updated) => console.log(updated)
-);
+User.findByIdAndUpdate(
+  "66432cdb3d28a1a12b8a98f3",
+  { name: "Alicia" },
+  { new: true } // return the updated document
+)
+  .then((updatedUser) => console.log("Updated user:", updatedUser))
+  .catch((err) => console.error(err));
 ```
 
-### ❌ Delete
+> `new: true` returns the modified document (default is old one).
+
+### ❌ `deleteOne()`
+
+Delete by Field
 
 ```js
 User.deleteOne({ email: "alice@example.com" }).then((result) =>
@@ -142,11 +166,17 @@ User.deleteOne({ email: "alice@example.com" }).then((result) =>
 );
 ```
 
-Or using `findByIdAndDelete`:
+> Deletes one document that matches the filter.
+
+### `findByIdAndDelete()`
+
+Delete by ID
 
 ```js
 User.findByIdAndDelete("647c6fcf...").then(() => console.log("User deleted"));
 ```
+
+> Deletes the document with the given `_id` and returns it.
 
 ---
 
