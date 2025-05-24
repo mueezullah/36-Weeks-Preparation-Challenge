@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 2rem;
+}
+
+.input-container {
+  margin-bottom: 1rem;
+}
+
+input {
+  padding: 0.5rem;
+  width: 220px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+#addBtn {
+  width: 75px;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(0, 153, 255);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: #f0f0f0;
+  border-radius: 4px;
+  margin: 0.5rem auto;
+  padding: 0.5rem;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li.completed span {
+  text-decoration: line-through;
+  color: green;
+}
+
+.taskBtn {
+  width: 75px;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  color: white;
+  font-weight: bold;
+}
+
+#deleteBtn {
+  background-color: #ff4d4d;
+}
+
+#doneBtn {
+  background-color: #45a049;
+}
