@@ -175,3 +175,54 @@ However, the component is not re-rendering.
 If you want to track a value without triggering a re-render, `useRef()` is the best choice."
 
 ---
+
+## 4. `useMemo`
+
+`useMemo` is a React Hook that helps optimize performance by memoizing (caching) the result of an expensive/complex computation so that it doesn't re-run on every render unless its dependencies change.
+
+### 🔸 Syntax:
+
+```js
+const memoizedValue = useMemo(() => {
+  // expensive computation
+  return computeValue(a, b);
+}, [a, b]);
+```
+
+- `useMemo(...)`: React hook that memoizes a computed value.
+- `() => { return ... }`: A function (called a “callback”) that computes the value you want to memoize.
+- `[a, b]`: A dependency array – `useMemo` will only re-run the function when any of these dependencies change.
+- `const memoizedValue = ...`: The memoized (cached) result of the computation is stored in this variable.
+
+### 🔹 Example:
+
+```js
+import React, { useState, useMemo } from "react";
+
+function App() {
+  const [count, setCount] = useState(0);
+  const [number, setNumber] = useState(10);
+
+  const expensiveCalculation = (num) => {
+    console.log("Calculating...");
+    for (let i = 0; i < 1000000000; i++) {} // simulate heavy task
+    return num * 2;
+  };
+
+  const doubledNumber = useMemo(() => expensiveCalculation(number), [number]);
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increase Count</button>
+
+      <h2>Number: {number}</h2>
+      <button onClick={() => setNumber(number + 1)}>Increase Number</button>
+
+      <h2>Doubled: {doubledNumber}</h2>
+    </div>
+  );
+}
+```
+
+---
