@@ -1,10 +1,10 @@
 # React State Management
 
-## Prop Drilling
+## 📌 Prop Drilling
 
 Prop drilling is the process of passing data from a parent component to a deeply nested child component through props, even if intermediate components don't use the data.
 
-### When to Use
+### 📦 When to Use
 
 - Small applications with simple component hierarchies.
 - When only a few components need the data.
@@ -22,18 +22,18 @@ Prop drilling is the process of passing data from a parent component to a deeply
 - Intermediate components must pass props they don’t use.
 - Harder to maintain as the app scales.
 
-### Example
+### 📘 Example
 
 - `App` → `Parent` → `Child` → `GrandChild`.
 - Only `GrandChild` uses the `user` data, but all intermediate components must pass it.
 
 ---
 
-## Context API / useContext
+## 📌 Context API / useContext
 
 Context API is a built-in React feature for sharing state across components without prop drilling. It provides a way to create a global state accessible to any component in the tree.
 
-### When to Use
+### 📦 When to Use
 
 - Medium-sized applications with shared state (e.g., theme, user data).
 - When prop drilling becomes impractical.
@@ -57,7 +57,7 @@ Context API is a built-in React feature for sharing state across components with
 const MyContext = createContext(defaultValue);
 ```
 
-### Example
+### 📘 Example
 
 ```js
 import { createContext, useContext, useState } from "react";
@@ -112,9 +112,9 @@ function App() {
 export default App;
 ```
 
-## Recoil
+---
 
-## useCallBack
+## 📌 useCallBack
 
 `useCallback` is a React Hook that returns a memoized version of a callback function, which only changes if one of the dependencies has changed.
 
@@ -167,6 +167,7 @@ const handleClick = () => {
 ```
 
 > In this case, `handleClick` gets recreated on every render, causing child components that depend on it to re-render unnecessarily.
+> Every re-render creates a new function instance with a different reference
 
 ### 🧪 Example with `React.memo`
 
