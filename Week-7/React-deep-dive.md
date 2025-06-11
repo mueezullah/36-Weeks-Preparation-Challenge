@@ -51,7 +51,7 @@ Context API is a built-in React feature for sharing state across components with
 - Overuse can lead to complex state management.
 - Performance overhead if not optimized (e.g., with useMemo).
 
-### Syntax
+### 🔧 Syntax
 
 ```js
 const MyContext = createContext(defaultValue);
@@ -115,3 +115,71 @@ export default App;
 ## Recoil
 
 ## useCallBack
+
+`useCallback` is a React Hook that returns a memoized version of a callback function, which only changes if one of the dependencies has changed.
+
+- The function is not executed immediately.
+- `useCallback` memoizes the reference to the function — not the result, not the execution.
+- It ensures that the same function reference is used between re-renders unless dependencies change.
+
+### 🔧 Syntax
+
+```js
+const memoizedCallback = useCallback(() => {
+  // callback logic here
+}, [dependencies]);
+```
+
+### 📦 When to Use `useCallback`
+
+- You're passing a callback to a memoized component (`React.memo`)
+- You're seeing performance issues due to frequent re-renders
+- The function creation is expensive (e.g., inside loops, animations)
+
+### 📘 Example
+
+```js
+import React, { useState, useCallback } from "react";
+import Child from "./Child";
+
+function Parent() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = useCallback(() => {
+    console.log("Button clicked");
+  }, []); // ✅ No need to re-create unless dependencies change
+
+  return (
+    <>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <Child onClick={handleClick} />
+    </>
+  );
+}
+```
+
+### 🔁 Without useCallback - Problem
+
+```js
+const handleClick = () => {
+  console.log("Button clicked");
+};
+```
+
+> In this case, `handleClick` gets recreated on every render, causing child components that depend on it to re-render unnecessarily.
+
+### 🧪 Example with `React.memo`
+
+```js
+const Child = React.memo(({ onClick }) => {
+  console.log("Child rendered");
+  return <button onClick={onClick}>Click me</button>;
+});
+```
+
+> With `useCallback`, `Child` doesn’t re-render on each parent render unless onClick changes.
+
+### ❗Important
+
+- useCallback(fn, []) is like saying "never recreate this function".
+- useCallback(fn, [a, b]) says "only recreate if a or b change".
