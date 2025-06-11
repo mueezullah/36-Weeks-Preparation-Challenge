@@ -184,3 +184,153 @@ const Child = React.memo(({ onClick }) => {
 
 - useCallback(fn, []) is like saying "never recreate this function".
 - useCallback(fn, [a, b]) says "only recreate if a or b change".
+
+---
+
+## 📘 State Lifting
+
+State Lifting is a concept in React where you move state up to the closest common parent component so that multiple child components can share and access the same state.
+
+### 🧠 Why Lift State?
+
+Sometimes, two or more sibling components need to communicate or share data.
+
+But in React:
+
+- State is local to a component.
+- Child components can’t access each other’s state directly.
+
+📦 **Solution**: Move (or "lift") the shared state up to the parent, and pass it down via props.
+
+### 🔧 Example
+
+❌ Without Lifting (No Shared State):
+
+```js
+function ComponentA() {
+  const [count, setCount] = useState(0);
+  return <div>Count A: {count}</div>;
+}
+
+function ComponentB() {
+  const [count, setCount] = useState(0);
+  return <div>Count B: {count}</div>;
+}
+```
+
+> Here, `ComponentA` and `ComponentB` have their own separate count states.
+
+✅ With Lifting (Shared State):
+
+```js
+function Parent() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <>
+      <ComponentA count={count} />
+      <ComponentB setCount={setCount} />
+    </>
+  );
+}
+
+function ComponentA({ count }) {
+  return <div>Count: {count}</div>;
+}
+
+function ComponentB({ setCount }) {
+  return (
+    <button onClick={() => setCount((prev) => prev + 1)}>Increment</button>
+  );
+}
+```
+
+> Now both components use the same lifted state from the parent.
+
+### 📌 When to Lift State
+
+- Two components need to reflect the same data
+- You want controlled inputs or forms
+- Sibling components need to communicate via shared state
+
+---
+
+## ⚛️ Recoil
+
+Recoil is a state management library for React, developed by Facebook. It provides a simple, powerful, and scalable way to manage global state in React applications.
+
+Recoil makes it easy to share state across components without lifting state manually or overusing Context API.
+
+### 🔍 Why Use Recoil?
+
+React's built-in state (`useState`, `useReducer`) is:
+
+- Great for local component state
+- Not ideal for shared/global state
+
+Recoil solves:
+
+- Prop drilling
+- Complex Context trees
+- Performance issues with large apps
+
+### 🛠 When to Use Recoil?
+
+- You need global state across multiple components
+- You're building a medium-to-large React app
+- You want simpler state logic than Redux or Context nesting
+
+### 🧠 Core Concepts of Recoil
+
+| Concept             | Description                                                             |
+| ------------------- | ----------------------------------------------------------------------- |
+| `atom`              | A **piece of state**. Think of it like a `useState` that can be shared. |
+| `selector`          | A **derived/computed state** (like a `useMemo` for Recoil).             |
+| `useRecoilState`    | Hook to **read & write** atom state (like `useState`).                  |
+| `useRecoilValue`    | Hook to **read** atom or selector value.                                |
+| `useSetRecoilState` | Hook to **write** to atom without reading it.                           |
+| `RecoilRoot`        | A **provider component** that wraps your app and enables Recoil.        |
+
+### ✅ Recoil vs Other State Managers
+
+| Feature        | Recoil      | Context API        | Redux               |
+| -------------- | ----------- | ------------------ | ------------------- |
+| Learning Curve | Easy ✅     | Easy ⚠️            | Steep ❌            |
+| Boilerplate    | Minimal ✅  | Minimal ✅         | High ❌             |
+| Async Support  | Built-in ✅ | Manual ❌          | Needs middleware ❌ |
+| Performance    | Granular ✅ | Rerenders a lot ❌ | Good ✅             |
+| Ecosystem      | Smaller 🟡  | Built-in ✅        | Mature ✅           |
+
+### 🧪 Example: Using atom and useRecoilState
+
+1. Define an atom (shared state)
+
+```js
+// state.js
+import { atom } from "recoil";
+
+export const countState = atom({
+  key: "countState", // unique ID
+  default: 0, // default value
+});
+```
+
+2. Use it in components
+
+```js
+import { useRecoilState } from "recoil";
+import { countState } from "./state";
+
+function Counter() {
+  const [count, setCount] = useRecoilState(countState);
+
+  return (
+    <>
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </>
+  );
+}
+```
+
+> ✅ Now any other component using countState will stay in sync automatically.
